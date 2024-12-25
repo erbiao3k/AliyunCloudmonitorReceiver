@@ -1,0 +1,2094 @@
+{
+    "HostAvailabilityTemplate": [],
+    "Description": "http://yourwebhook.com/alert/webhook/xod_aly_1114624318124047",
+    "SystemEventTemplates": [
+        {
+            "webhookParameterList": [],
+            "notifyLevel": 3,
+            "fcParameterList": [],
+            "alertName": "边缘DDoS网络层攻击事件",
+            "mnsParameterList": [],
+            "description": "边缘DDoS网络层攻击事件",
+            "slsParameterList": [],
+            "eventPattern": {
+                "product": "dcdn",
+                "levelList": [
+                    "CRITICAL"
+                ],
+                "nameList": [
+                    "dcdn_ddos_l4_event"
+                ],
+                "eventType": [
+                    "ATTACK"
+                ]
+            }
+        },
+        {
+            "webhookParameterList": [],
+            "notifyLevel": 3,
+            "fcParameterList": [],
+            "alertName": "边缘DDoS应用层攻击事件",
+            "mnsParameterList": [],
+            "description": "边缘DDoS应用层攻击事件",
+            "slsParameterList": [],
+            "eventPattern": {
+                "product": "dcdn",
+                "levelList": [
+                    "CRITICAL"
+                ],
+                "nameList": [
+                    "dcdn_ddos_l7_event"
+                ],
+                "eventType": [
+                    "ATTACK"
+                ]
+            }
+        }
+    ],
+    "AlertTemplatesJson": {
+        "nas": [
+            {
+                "displayName": "文件存储NAS_写延迟升高",
+                "category": "nas",
+                "namespace": "acs_nas",
+                "metricName": "LatencyWrite",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "文件存储NAS_读延迟升高",
+                "category": "nas",
+                "namespace": "acs_nas",
+                "metricName": "LatencyRead",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "kvstore_standard": [
+            {
+                "displayName": "Redis标准版_平均响应时间升高(us)",
+                "category": "kvstore_standard",
+                "namespace": "acs_kvstore",
+                "metricName": "StandardAvgRt",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "Redis标准版_数据同步延迟升高(seconds)",
+                "webhook": "",
+                "category": "kvstore_standard",
+                "namespace": "acs_kvstore",
+                "metricName": "StandardSyncDelayTime",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "3",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "Redis标准版_连接数使用率升高(%)",
+                "webhook": "",
+                "category": "kvstore_standard",
+                "namespace": "acs_kvstore",
+                "metricName": "StandardConnectionUsage",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 30
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "Redis标准版_CPU使用率升高(%)",
+                "webhook": "",
+                "category": "kvstore_standard",
+                "namespace": "acs_kvstore",
+                "metricName": "StandardCpuUsage",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 30
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            },
+            {
+                "displayName": "Redis标准版_流入带宽使用率升高(%)",
+                "webhook": "",
+                "category": "kvstore_standard",
+                "namespace": "acs_kvstore",
+                "metricName": "StandardIntranetInRatio",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 30
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "Redis标准版_流出带宽使用率升高(%)",
+                "webhook": "",
+                "category": "kvstore_standard",
+                "namespace": "acs_kvstore",
+                "metricName": "StandardIntranetOutRatio",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 30
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "Redis标准版_内存使用率升高(%)",
+                "webhook": "",
+                "category": "kvstore_standard",
+                "namespace": "acs_kvstore",
+                "metricName": "StandardMemoryUsage",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 30
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "ecs": [
+            {
+                "displayName": "ECS_cpu_idle异常(%)",
+                "webhook": "",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "cpu_idle",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "LessThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 180
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "LessThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 1
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "LessThanOrEqualToThreshold",
+                        "threshold": "10",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_cpu_wait异常(%)",
+                "webhook": "",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "cpu_wait",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "10",
+                        "times": 180
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 1
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_CPU5分钟平均负载升高",
+                "webhook": "http://infra.aiagain.com/alert/webhook/ik_aly_guangzhouyidou",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "load_5m",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "40",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_内存使用率升高(%)",
+                "webhook": "",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "memory_usedutilization",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "99",
+                        "times": 180
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "99",
+                        "times": 1
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "99",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_网卡入方向丢包率升高(%)",
+                "webhook": "",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "packetInDropRates",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "10",
+                        "times": 1
+                    },
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "50",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_网卡出方向丢包率升高(%)",
+                "webhook": "",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "packetOutDropRates",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "10",
+                        "times": 1
+                    },
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "50",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_连接数异常(count)",
+                "webhook": "",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "concurrentConnections",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "50000",
+                        "times": 1
+                    },
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_磁盘/dev/vda1使用率升高(%)",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "diskusage_utilization",
+                "selector": {
+                    "device": "/dev/vda1"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "85",
+                        "times": 60
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "95",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_磁盘/dev/vdb1使用率升高(%)",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "diskusage_utilization",
+                "selector": {
+                    "device": "/dev/vdb1"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "85",
+                        "times": 60
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "95",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_系统进程总数飙升(count)",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "vm.ProcessCount",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "2000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_磁盘/dev/vda1_inode使用率异常(%)",
+                "webhook": "",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "fs_inodeutilization",
+                "selector": {
+                    "device": "/dev/vda1"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 180
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 10
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ECS_磁盘/dev/vdb_inode使用率异常(%)",
+                "category": "ecs",
+                "namespace": "acs_ecs_dashboard",
+                "metricName": "fs_inodeutilization",
+                "selector": {
+                    "device": "/dev/vdb1"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 180
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 10
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "alb": [
+            {
+                "displayName": "ALB_入方向带宽飙升(bits/s)",
+                "webhook": "",
+                "category": "alb",
+                "namespace": "acs_alb",
+                "metricName": "LoadBalancerInBits",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100000000",
+                        "times": 10
+                    },
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "500000000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "ALB_出方向带宽飙升(bits/s)",
+                "webhook": "",
+                "category": "alb",
+                "namespace": "acs_alb",
+                "metricName": "LoadBalancerOutBits",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100000000",
+                        "times": 10
+                    },
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "500000000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "polardb_mysql_cluster": [
+            {
+                "displayName": "云数据库POLARDB(MySQL)_CPU使用率",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_cpu_utilization",
+                "period": 60,
+                "selector": {},
+                "escalations": {
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_IOPS使用率",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_iops_usage",
+                "period": 60,
+                "selector": {},
+                "escalations": {
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_内存使用率",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_memory_utilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_只读节点复制延迟/s",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_replica_lag",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_每秒慢查询数量",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_slow_queries_ps",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "50",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_连接数使用率",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_connection_utilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_磁盘使用率",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_disk_utilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "85",
+                        "times": 10
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_ProxyCPU使用率",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_proxy_cpu_utilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 10
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "云数据库POLARDB(MySQL)_每秒事物数",
+                "category": "polardb_mysql_cluster",
+                "namespace": "acs_polardb",
+                "metricName": "cluster_tps",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "dcdn": [
+            {
+                "displayName": "DCDN-http请求时间大于10s",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "rt_http",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "10000",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-4xx状态码比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "code_ratio_4",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 60
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-5xx状态码比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "code_ratio_5",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-Http4xx状态码比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "code_ratio_4_http",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-Http5xx状态码比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "code_ratio_5_http",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-L1边缘节点400比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "CodeRatio_400",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-L1边缘节点500比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "CodeRatio_500",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-L1边缘节点502比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "CodeRatio_502",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-L1边缘节点503比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "CodeRatio_503",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-L1边缘节点504比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "CodeRatio_504",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-Websocket4xx状态码比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "code_ratio_4_ws",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-Websocket5xx状态码比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "code_ratio_5_ws",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源403的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_403",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源400的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_400",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源404的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_404",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源4xx的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_4",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源500的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_500",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源502的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_502",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源503的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_503",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源504的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_504",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源5xx的比例",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriCodeRatio_5",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-http流出带宽",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "bps_out_http",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20000000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-http流入带宽",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "bps_in_http",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20000000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-websocket流入带宽",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "bps_in_ws",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20000000",
+                        "times": 5
+                    }
+                }
+            },
+            {
+                "displayName": "DCDN-websocket流出带宽",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "bps_out_ws",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20000000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-流入带宽",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "bps_in",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20000000",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-流出带宽",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "bps_out",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "20000000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-WAFweb基础防护每秒拦截数",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "waf_web_block_qps",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-WAF自定义规则每秒拦截数",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "waf_acl_block_qps",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-http每秒请求数",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "dcdn_qps_http",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5000",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-websocket每秒请求数",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "dcdn_qps_ws",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-回源站的请求次数",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "OriAcc",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-请求次数",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "dcdn_qps",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5000",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-http命中率",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "hit_rate_http",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "LessThanOrEqualToThreshold",
+                        "threshold": "10",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-websocket命中率",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "hit_rate_ws",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "LessThanOrEqualToThreshold",
+                        "threshold": "10",
+                        "times": 5
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "DCDN-字节命中率",
+                "category": "dcdn",
+                "namespace": "acs_dcdn",
+                "metricName": "hit_rate",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "LessThanOrEqualToThreshold",
+                        "threshold": "10",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "slb": [
+            {
+                "displayName": "CLB_实例入方向每秒丢包数异常(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceDropPacketRX",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_实例出方向每秒丢包数异常(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceDropPacketTX",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_实例最大连接数使用率升高(%)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceMaxConnectionUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 60
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 5
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_实例每秒新建连接数异常(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceNewConnection",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "10000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_实例新建连接数使用率异常(%)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceNewConnectionUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 60
+                    },
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 5
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_七层实例QPS使用率飙升(%)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceQpsUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "70",
+                        "times": 30
+                    },
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_实例网络流出带宽使用率异常(%)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceTrafficTXUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            },
+            {
+                "displayName": "CLB_实例入方向每秒bit数异常(Mbits/s)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceTrafficRX",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "4398046511104000",
+                        "times": 15
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            },
+            {
+                "displayName": "CLB_实例出方向每秒bit数异常(Mbits/s)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceTrafficTX",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "104857600",
+                        "times": 30
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "524288000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            },
+            {
+                "displayName": "CLB_七层实例每秒状态码5XX数量异常(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceStatusCode5xx",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "5000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_七层实例每秒UpstreamCode5xx数量异常(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "InstanceUpstreamCode5xx",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "500",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_七层监听每秒状态码5XX数量异常_port443(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "StatusCode5xx",
+                "selector": {
+                    "protocol": "https",
+                    "port": "443"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "500",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_七层监听每秒状态码5XX数量异常_port80(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "StatusCode5xx",
+                "selector": {
+                    "protocol": "http",
+                    "port": "80"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "500",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_七层监听每秒UpstreamCode5xx数量异常_port443(Count/Second)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "UpstreamCode5xx",
+                "selector": {
+                    "protocol": "https",
+                    "port": "443"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "500",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "CLB_七层监听每秒UpstreamCode5xx数量异常_port80(Count/s)",
+                "webhook": "",
+                "category": "slb",
+                "namespace": "acs_slb_dashboard",
+                "metricName": "UpstreamCode5xx",
+                "selector": {
+                    "protocol": "http",
+                    "port": "80"
+                },
+                "escalations": {
+                    "info": {},
+                    "warn": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "100",
+                        "times": 3
+                    },
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "500",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "eip": [
+            {
+                "displayName": "弹性公网IP_入方向丢包速率异常(Packets/Second)",
+                "webhook": "",
+                "category": "eip",
+                "namespace": "acs_vpc_eip",
+                "metricName": "in_ratelimit_drop_speed",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "弹性公网IP_出方向丢包速率异常(Packets/Second)",
+                "webhook": "",
+                "category": "eip",
+                "namespace": "acs_vpc_eip",
+                "metricName": "out_ratelimit_drop_speed",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "1000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "弹性公网IP_网络流入带宽使用率异常(%)",
+                "webhook": "",
+                "category": "eip",
+                "namespace": "acs_vpc_eip",
+                "metricName": "net_in.rate_percentage",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "0.7000000000000001",
+                        "times": 30
+                    },
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "0.8",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "弹性公网IP_网络流出带宽利用率异常(%)",
+                "webhook": "",
+                "category": "eip",
+                "namespace": "acs_vpc_eip",
+                "metricName": "net_out.rate_percentage",
+                "selector": {},
+                "escalations": {
+                    "info": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "0.7000000000000001",
+                        "times": 30
+                    },
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "0.8",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "弹性公网IP_入方向限速丢包速率升高(Packets/Second)",
+                "webhook": "",
+                "category": "eip",
+                "namespace": "acs_vpc_eip",
+                "metricName": "in_ratelimit_drop_speed",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "10000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "弹性公网IP_出方向限速丢包速率升高(Packets/Second)",
+                "webhook": "",
+                "category": "eip",
+                "namespace": "acs_vpc_eip",
+                "metricName": "out_ratelimit_drop_speed",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "10000",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ],
+        "oss": [
+            {
+                "displayName": "OSS可用性降低(%)",
+                "webhook": "",
+                "category": "oss",
+                "namespace": "acs_oss_dashboard",
+                "metricName": "Availability",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "LessThanOrEqualToThreshold",
+                        "threshold": "80",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            },
+            {
+                "displayName": "OSS网络错误请求量异常(%)",
+                "webhook": "",
+                "category": "oss",
+                "namespace": "acs_oss_dashboard",
+                "metricName": "NetworkErrorRate",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            },
+            {
+                "displayName": "OSS_用户层级客户端超时错误请求量异常(%)",
+                "webhook": "",
+                "category": "oss",
+                "namespace": "acs_oss_dashboard",
+                "metricName": "UserClientTimeoutErrorRate",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Value",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "30",
+                        "times": 1
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            }
+        ],
+        "mongodb_replicaset": [
+            {
+                "displayName": "MongoDB副本集云实例_CPU使用率",
+                "category": "mongodb_replicaset",
+                "namespace": "acs_mongodb",
+                "metricName": "CPUUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "INSUFFICIENT_DATA"
+            },
+            {
+                "displayName": "MongoDB副本集云实例_IOPS使用率",
+                "category": "mongodb_replicaset",
+                "namespace": "acs_mongodb",
+                "metricName": "IOPSUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "MongoDB副本集云实例_内存使用率",
+                "category": "mongodb_replicaset",
+                "namespace": "acs_mongodb",
+                "metricName": "MemoryUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "MongoDB副本集云实例_复制延迟",
+                "category": "mongodb_replicaset",
+                "namespace": "acs_mongodb",
+                "metricName": "ReplicationLag",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Minimum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "60",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "MongoDB副本集云实例_磁盘使用率",
+                "category": "mongodb_replicaset",
+                "namespace": "acs_mongodb",
+                "metricName": "DiskUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Average",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 30
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            },
+            {
+                "displayName": "MongoDB副本集云实例_连接数使用率",
+                "category": "mongodb_replicaset",
+                "namespace": "acs_mongodb",
+                "metricName": "ConnectionUtilization",
+                "selector": {},
+                "escalations": {
+                    "info": {},
+                    "warn": {},
+                    "critical": {
+                        "statistics": "Maximum",
+                        "comparisonOperator": "GreaterThanOrEqualToThreshold",
+                        "threshold": "90",
+                        "times": 3
+                    }
+                },
+                "noDataPolicy": "KEEP_LAST_STATE"
+            }
+        ]
+    },
+    "Namespace": "acs_custom",
+    "ProcessMonitorTemplates": [],
+    "Name": "all_resource_alert_template_克隆"
+}
